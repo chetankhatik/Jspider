@@ -1,0 +1,16 @@
+
+@keyframes burn {
+  0% {
+    color: #ff6a00;
+    text-shadow: 0 0 10px #ff6a00, 0 0 20px #ff6a00, 0 0 30px #ff6a00;
+  }
+  50% {
+    color: #ffed87;
+    text-shadow: 0 0 10px #ffed87, 0 0 20px #ffed87, 0 0 30px #ffed87;
+  }
+  100% {
+    color: #ff6a00;
+    text-shadow: 0 0 10px #ff6a00, 0 0 20px #ff6a00, 0 0 30px #ff6a00;
+  }
+}
+

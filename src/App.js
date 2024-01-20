@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Sidebar from "./Component/Sidebar";
+import Main from "./Component/Main";
+import { useState, useEffect } from "react";
 
-function App() {
+export default function App() {
+  const [selectedOption, setSelectedOption] = useState("Home");
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+  const handleOptionChange = (option) => {
+    setSelectedOption(option);
+  };
+  const updateWindowDimensions = () => {
+    setIsDesktop(window.innerWidth > 1385);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateWindowDimensions);
+    return () => {
+      window.removeEventListener("resize", updateWindowDimensions);
+    };
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Sidebar onOptionChange={handleOptionChange} />
+      <Main selectedOption={selectedOption} />
+      {/* {isDesktop && <Sidebar onOptionChange={handleOptionChange} />}
+      {isDesktop && <Main selectedOption={selectedOption} />} */}
     </div>
   );
 }
-
-export default App;
